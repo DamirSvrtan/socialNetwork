@@ -1,0 +1,21 @@
+<% provide(:title, "Sign in") %>
+<div id="header2">
+<h1>Prijava</h1>
+</div>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:session, url: sessions_path) do |f| %>
+
+      <%= f.label :email, "E-mail" %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password, "Lozinka" %>
+      <%= f.password_field :password %>
+	<br/>
+
+      <%= f.submit "Prijavi se", class: "btn btn-large" %>
+    <% end %>
+
+    <p>Novi korisnik? <%= link_to "Registriraj se!", signup_path %></p>
+  </div>
+</div>

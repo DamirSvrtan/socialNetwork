@@ -1,0 +1,28 @@
+" Press ? for help
+
+.. (up a dir)
+/home/dzimbo/Desktop/rails_projects/shs/
+▾ app/
+  ▸ assets/
+  ▾ controllers/
+      application_controller.rb
+  ▸ helpers/
+  ▸ mailers/
+  ▸ models/
+  ▾ views/
+    ▸ layouts/
+▸ config/
+▸ db/
+▸ doc/
+▸ lib/
+▸ log/
+▸ public/
+▸ script/
+▸ tmp/
+▸ vendor/
+  config.ru
+  Gemfile
+  Gemfile.lock
+  Rakefile
+  README.md
+  README.rdoc

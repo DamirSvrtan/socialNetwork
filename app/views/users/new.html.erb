@@ -1,0 +1,30 @@
+<%= provide(:title, 'Sign Up') %>
+<div id='header2'>
+<h1>Registracija</h1>
+
+</div>
+
+<div class="row">
+
+  <div class="span6 offset3">
+
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <b><%= f.label :name , "Nadimak" %></b>
+      <%= f.text_field :name %>
+
+      <%= f.label :email, "E-mail"%>
+      <%= f.text_field :email %>
+
+      <%= f.label :password, "Lozinka:" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Ponovni unos lozinke:" %>
+      <%= f.password_field :password_confirmation %>
+      <br/>
+      <%= f.submit "Registriraj se", class: "btn btn-inverse btn-large" %>
+    <% end %>
+      <p>Registrirani korisnik? <%= link_to "Prijavi se!", signin_path %></p>
+  </div>
+</div>
