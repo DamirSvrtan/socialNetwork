@@ -2,7 +2,7 @@
 	<div id="user_info_header_left">
 		<% if !signed_in? %>
 			<h1>Home Page</h1>
-			<%= link_to "Sign up please!", 'signup' %>
+			<%= link_to "Sign up please!", 'signup' %> | <%= link_to "Sign in", 'signin' %>
 		<% else %>			
 			<h1>Welcome <%= current_user.name %>!</h1>
 			<%= link_to "Your profile", current_user %>
@@ -12,15 +12,15 @@
 	</div>
 	<% if signed_in? %>
 		<div id="friend_requests">
-			<h1>Friend requests:</h1>
-			<br>
+			<h1>Friend requests(<%= current_user.friend_requests.count %>):</h1>
+
 			<table id="requests">
 			<% current_user.friend_requests.each do | fr | %>
 				<tr>
 					<td><%= link_to fr.requester.name, fr.requester %></td>
 					<td><div class="btn-group">
 						<button class="btn">Approve</button>
-						<button class="btn"><%= link_to "delete", fr, method: :delete, data: { confirm: "You sure?" } %>/button>
+						<button class="btn"><%= link_to "Don't", fr, method: :delete, data: { confirm: "You sure?" } %></button>
 					</div></td>
 				</tr>
 			<% end %>

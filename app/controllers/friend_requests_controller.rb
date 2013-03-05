@@ -11,5 +11,8 @@ class FriendRequestsController < ApplicationController
 	end
 
 	def destroy
+			@request = FriendRequest.find(params[:id])
+			@request.destroy
+			redirect_to root_path
 	end
 end
