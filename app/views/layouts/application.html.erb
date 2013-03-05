@@ -8,14 +8,18 @@
 </head>
 <body>	
 	<header id="header">
-		<ul>
-			<% if signed_in? %>
-				<li><%= link_to "Profile", current_user %></li>
-				<li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
-			<% else %>
-				<li><%= link_to "Sign In", signin_path %></li> 
-			<% end %>
-		</ul>
+		<div id = "header_content">
+			<ul>
+				<% if signed_in? %>
+					<li><%= link_to "Home", root_path %></li>
+					<li><%= link_to "Other Users", users_path %></li>
+					<li><%= link_to @current_user.name, current_user %></li>
+					<li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
+				<% else %>
+					<li><%= link_to "Sign In", signin_path %></li> 
+				<% end %>
+			</ul>
+		</div>
 	</header>
 
 	<% flash.each do |key, value| %>
@@ -24,7 +28,9 @@
 		</div>
 	<% end %>
 
-	<%= yield %>
+	<div id = "content">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

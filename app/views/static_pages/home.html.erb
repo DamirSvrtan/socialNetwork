@@ -1,8 +1,31 @@
-<% provide(:title, 'Home') %>
-
-<div id="header2">
-	<h1><%= yield(:title) %></h1>
-	<p>
-		<%= link_to "Sign Up!", 'signup' %>
-	</p>
+<div id="user_info_header">
+	<div id="user_info_header_left">
+		<% if !signed_in? %>
+			<h1>Home Page</h1>
+			<%= link_to "Sign up please!", 'signup' %>
+		<% else %>			
+			<h1>Welcome <%= current_user.name %>!</h1>
+			<%= link_to "Your profile", current_user %>
+		<% end %>
+	</div>
+	<div id="user_info_header_right">
+	</div>
+	<% if signed_in? %>
+		<div id="friend_requests">
+			<h1>Friend requests:</h1>
+			<br>
+			<ul id="requests">
+			<% current_user.friend_requests.each do | fr | %>
+				<li>
+					<%= link_to fr.requester.name, fr.requester %>
+					<br><br>
+					<div class="btn-group">
+						  <button class="btn">Approve</button>
+						  <button class="btn">Don't approve</button>
+					</div>
+				</li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
 </div>

@@ -1,0 +1,9 @@
+<div id='header2'>
+	<h1> List of users: </h1>
+	<br/>
+	<% @users.each do |user| %>
+	<ul>
+		<li><%= link_to user.name, user %></li>
+	</ul>
+	<% end %>
+</div>

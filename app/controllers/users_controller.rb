@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
 	@user=User.find(params[:id])
+	@friendrequest = FriendRequest.new()
   end
 
   def new
@@ -16,5 +17,9 @@ class UsersController < ApplicationController
 	else 
 		render 'new'
 	end
+  end
+
+  def index
+	@users = User.all
   end
 end

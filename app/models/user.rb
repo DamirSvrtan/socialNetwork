@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remeber_token
 
+	has_many :friend_requests, :class_name => 'FriendRequest', :foreign_key => 'requestee_id'
+  	has_many :sent_requests, :class_name => 'FriendRequest', :foreign_key => 'requester_id'
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :name, :presence => true, :uniqueness => true, :length => { :minimum => 3 }		
