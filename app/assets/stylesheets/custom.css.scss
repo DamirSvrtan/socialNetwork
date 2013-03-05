@@ -66,7 +66,7 @@
 		position:relative;
 		height:60px;
 		border-bottom:solid;
-		background-color:#BCE8F1;
+		background-color:#AB988B;
 	}	
 	#user_info_header_left{
 		float:left;
@@ -93,12 +93,16 @@
 	}
 	#requests{
 		list-style-type:none;
+
 	}
-	#requests li{
+	#requests tr{
 		width:200px;
 		height:70px;
 		margin-top:5px;
 		font-size:24px;
+	}
+	#requests td {
+		left:10px;
 	}
 	.row
 	{

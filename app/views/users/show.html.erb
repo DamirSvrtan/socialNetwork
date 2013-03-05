@@ -12,6 +12,7 @@
 					<span class="label label-important" style="position:relative;font-size:12px;top:20px;left:10px;height:22px;">Respond to friend request</span>
 				<% else %>
 					<%= form_for(@friendrequest) do |f| %>
+						<%= f.hidden_field :requester_id, :value => current_user.id %>
 						<%= f.hidden_field :requestee_id, :value => @user.id %>
 						<%= f.submit "Add Friend", class: "btn btn-large btn-primary" %>
 					<% end %>

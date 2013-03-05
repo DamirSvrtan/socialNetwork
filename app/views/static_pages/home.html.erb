@@ -14,18 +14,17 @@
 		<div id="friend_requests">
 			<h1>Friend requests:</h1>
 			<br>
-			<ul id="requests">
+			<table id="requests">
 			<% current_user.friend_requests.each do | fr | %>
-				<li>
-					<%= link_to fr.requester.name, fr.requester %>
-					<br><br>
-					<div class="btn-group">
-						  <button class="btn">Approve</button>
-						  <button class="btn">Don't approve</button>
-					</div>
-				</li>
+				<tr>
+					<td><%= link_to fr.requester.name, fr.requester %></td>
+					<td><div class="btn-group">
+						<button class="btn">Approve</button>
+						<button class="btn"><%= link_to "delete", fr, method: :delete, data: { confirm: "You sure?" } %>/button>
+					</div></td>
+				</tr>
 			<% end %>
-			</ul>
+			</table>
 		</div>
 	<% end %>
 </div>
