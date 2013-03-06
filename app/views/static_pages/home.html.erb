@@ -15,15 +15,25 @@
 			<h1>Friend requests(<%= current_user.friend_requests.count %>):</h1>
 
 			<table id="requests">
-			<% current_user.friend_requests.each do | fr | %>
-				<tr>
-					<td><%= link_to fr.requester.name, fr.requester %></td>
-					<td><div class="btn-group">
-						<button class="btn">Approve</button>
-						<button class="btn"><%= link_to "Don't", fr, method: :delete, data: { confirm: "You sure?" } %></button>
-					</div></td>
-				</tr>
-			<% end %>
+				<% current_user.friend_requests.each do | fr | %>
+					<tr>
+						<td><%= link_to fr.requester.name, fr.requester %></td>
+						<td><div class="btn-group">
+							<button class="btn"><%= link_to "Approve", friendships_path(:friend_id => fr.requester.id), method: :post %></button>
+							<button class="btn"><%= link_to "Don't", fr, method: :delete, data: { confirm: "You sure?" } %></button>
+						</div></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+		<div id="friends">
+			<h1>Friends(<%= current_user.number_of_friends %>):</h1>
+			<table id="friends">
+				<% current_user.all_friends.each do | f | %>
+					<tr>
+						<td><%= link_to f.name, f %></td>
+					</tr>
+				<% end %>
 			</table>
 		</div>
 	<% end %>

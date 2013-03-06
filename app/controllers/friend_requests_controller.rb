@@ -4,9 +4,9 @@ class FriendRequestsController < ApplicationController
 	end
 
 	def create
-			@request=FriendRequest.new(params[:friend_request])
+			@request=current_user.sent_requests.build(:requestee_id => params[:requestee_id])
 			@request.save!
-			redirect_to User.find(params[:friend_request][:requestee_id])
+			redirect_to User.find(params[:requestee_id])
 
 	end
 

@@ -3,8 +3,9 @@ Shs::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
 
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :friend_requests, only: [:new, :create, :destroy]
+  resources :sessions, only: [ :new, :create, :destroy]
+  resources :friend_requests, only: [ :new, :create, :destroy]
+  resources :friendships, only: [ :new, :create, :destroy]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

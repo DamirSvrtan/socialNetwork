@@ -5,18 +5,8 @@
 	</div>
 	<div id="user_info_header_right">
 		<% if signed_in? %>
-			<% if @user.id != current_user.id %>
-				<% if friend_request_pending?(@user) %>
-					<span class="label label-warning" style="position:relative;font-size:12px;top:20px;left:10px;height:22px;">Pending friend request</span>
-				<% elsif have_to_respond_to_friend_request(@user) %>
-					<span class="label label-important" style="position:relative;font-size:12px;top:20px;left:10px;height:22px;">Respond to friend request</span>
-				<% else %>
-					<%= form_for(@friendrequest) do |f| %>
-						<%= f.hidden_field :requester_id, :value => current_user.id %>
-						<%= f.hidden_field :requestee_id, :value => @user.id %>
-						<%= f.submit "Add Friend", class: "btn btn-large btn-primary" %>
-					<% end %>
-				<% end %>
+			<% if @user != current_user %>
+				<%= relationship_with(@user).html_safe %>
 			<% end %>
 		<% end %>
 	</div>
