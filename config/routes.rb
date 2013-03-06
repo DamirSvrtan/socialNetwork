@@ -7,6 +7,10 @@ Shs::Application.routes.draw do
   resources :friend_requests, only: [ :new, :create, :destroy]
   resources :friendships, only: [ :new, :create, :destroy]
 
+  resources :users do
+	get 'mutual_friends', :on => :member
+  end
+
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

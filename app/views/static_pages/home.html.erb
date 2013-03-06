@@ -8,8 +8,6 @@
 			<%= link_to "Your profile", current_user %>
 		<% end %>
 	</div>
-	<div id="user_info_header_right">
-	</div>
 	<% if signed_in? %>
 		<div id="friend_requests">
 			<h1>Friend requests(<%= current_user.friend_requests.count %>):</h1>
@@ -17,8 +15,8 @@
 			<table id="requests">
 				<% current_user.friend_requests.each do | fr | %>
 					<tr>
-						<td><%= link_to fr.requester.name, fr.requester %></td>
-						<td><div class="btn-group">
+						<td style="width:150px;"><%= link_to fr.requester.name, fr.requester %></td>
+						<td style="width:200px;"><div class="btn-group">
 							<button class="btn"><%= link_to "Approve", friendships_path(:friend_id => fr.requester.id), method: :post %></button>
 							<button class="btn"><%= link_to "Don't", fr, method: :delete, data: { confirm: "You sure?" } %></button>
 						</div></td>
@@ -28,13 +26,11 @@
 		</div>
 		<div id="friends">
 			<h1>Friends(<%= current_user.number_of_friends %>):</h1>
-			<table id="friends">
+			<ul>
 				<% current_user.all_friends.each do | f | %>
-					<tr>
-						<td><%= link_to f.name, f %></td>
-					</tr>
+					<li style="font-size:24px;font-weight:bold;margin: 1.2em;"><%= link_to f.name, f %></li>
 				<% end %>
-			</table>
+			</ul>
 		</div>
 	<% end %>
 </div>

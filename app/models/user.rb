@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remeber_token
 
-	has_many :friend_requests, :class_name => 'FriendRequest', :foreign_key => 'requestee_id'
-  	has_many :sent_requests, :class_name => 'FriendRequest', :foreign_key => 'requester_id'
+	has_many :friend_requests, :class_name => 'FriendRequest', :foreign_key => 'requestee_id', :dependent => :destroy
+  	has_many :sent_requests, :class_name => 'FriendRequest', :foreign_key => 'requester_id', :dependent => :destroy
 
-	has_many :friendships, :class_name => 'Friendship', :foreign_key => 'user_id'
-  	has_many :inverse_friendships, :class_name => 'Friendship', :foreign_key => 'friend_id'
+	has_many :friendships, :class_name => 'Friendship', :foreign_key => 'user_id', :dependent => :destroy
+  	has_many :inverse_friendships, :class_name => 'Friendship', :foreign_key => 'friend_id', :dependent => :destroy
 
 	has_many :friends, :through => :friendships
 	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
@@ -28,6 +28,19 @@ class User < ActiveRecord::Base
 		self.friends + self.inverse_friends
 	end
 
+	def mutual_friends_with(user)
+		user.all_friends & self.all_friends
+	end
+
+	def mutual_friends_with_to_s(user)
+		number_of_mutual_friends=self.mutual_friends_with(user).count
+		return "mutual friends: #{number_of_mutual_friends}" if number_of_mutual_friends > 0
+		return "no mutual friends" if number_of_mutual_friends == 0
+	end
+
+	def has_mutual_friends_with?(user)
+		return true if self.mutual_friends_with(user).count > 0
+	end
 	private
 
 		def create_remeber_token

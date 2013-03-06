@@ -22,4 +22,10 @@ class UsersController < ApplicationController
   def index
 	@users = User.all
   end
+
+
+  def mutual_friends
+	@user = User.find(params[:id])
+	@mutual_friends = current_user.mutual_friends_with(@user)
+  end
 end

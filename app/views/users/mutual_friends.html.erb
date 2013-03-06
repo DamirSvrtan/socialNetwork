@@ -1,0 +1,14 @@
+<div id="user_info_header">
+	<div id="user_info_header_left">
+		<h1>Mutual friends with <%= link_to @user.name, @user %></h1>
+		<b>Number of <%= current_user.mutual_friends_with_to_s(@user) %></b>
+	</div>
+</div>
+
+<div id="mutual_friends">
+	<ul >
+		<% @mutual_friends.each do | mf | %>
+			<li style="font-size:24px;font-weight:bold;margin: 1.2em;"><%= link_to mf.name, mf %></li>	
+		<% end %>	
+	</ul>
+</div>
