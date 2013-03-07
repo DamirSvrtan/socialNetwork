@@ -28,4 +28,8 @@ class UsersController < ApplicationController
 	@user = User.find(params[:id])
 	@mutual_friends = current_user.mutual_friends_with(@user)
   end
+
+  def friends
+	@user = User.find(params[:id])
+  end
 end

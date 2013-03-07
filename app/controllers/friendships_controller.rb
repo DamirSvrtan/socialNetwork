@@ -8,7 +8,7 @@ def create
 	if @friendship.save
 		@request = FriendRequest.where(:requester_id => params[:friend_id], :requestee_id => current_user.id).first
 		@request.destroy
-		redirect_to root_path
+		redirect_to my_friend_requests_path
 	else
 		flash[:notice] = "Sumtng went wrong. Please try again"
 		redirect_to root_path

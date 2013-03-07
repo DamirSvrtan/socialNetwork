@@ -1,0 +1,21 @@
+<div id="user_info_header">
+	<div id="user_info_header_left">
+		<h1>Friend requests:</h1>
+		<b><%= current_user.friend_requests.count %> friend requests</b>
+	</div>
+</div>	
+	<% if signed_in? %>
+		<div id="friend_requests">
+			<table id="requests">
+				<% current_user.friend_requests.each do | fr | %>
+					<tr>
+						<td style="width:150px;"><%= link_to fr.requester.name, fr.requester %></td>
+						<td style="width:200px;"><div class="btn-group">
+							<button class="btn"><%= link_to "Approve", friendships_path(:friend_id => fr.requester.id), method: :post %></button>
+							<button class="btn"><%= link_to "Don't", fr, method: :delete, data: { confirm: "You sure?" } %></button>
+						</div></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	<% end %>

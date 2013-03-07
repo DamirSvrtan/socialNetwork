@@ -48,11 +48,24 @@
 		border-left:4px solid #FF6600;
 		border-right:4px solid #FF6600;
 		border-top:4px solid #FF6600;
+		border-bottom:4px solid #FF6600;
 		left:50%;
 		margin-left:-400px;
 		height:600px;
 		margin-top:10px;
 		background-color:#181818;
+	}
+	div#side_nav_bar{
+		position:absolute;
+		width:190px;
+		left:50%;
+		margin-top:85px;
+		margin-left:-600px;
+		height:400px;
+	}
+	div#side_nav_bar ul li{
+		 border-bottom:2px solid #FF6600;
+		 margin:2px;
 	}
 
 	@mixin box_sizing 
@@ -117,13 +130,12 @@
 		background-color:#181818;
 	}
 	#friends{
-		float:left;
-		
+		float:left;		
 		margin-left:0px;
 		border:8px solid #181818;
 		width:784px;
 		background-color:#181818;
-}
+	}
 	#requests{
 		list-style-type:none;
 		display: block;

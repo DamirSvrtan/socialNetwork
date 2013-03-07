@@ -1,0 +1,18 @@
+<div id="user_info_header">
+	<div id="user_info_header_left">
+		<% if @user == current_user %>
+			<h1> My friends </h1>
+		<% else %>
+			<h1><%= link_to @user.name.capitalize, @user %>'s friends</h1>
+		<% end %>
+		<b>Number of friends: <%= @user.number_of_friends %></b>
+	</div>
+</div>
+<div id="friends">
+	<ul >
+		<% @user.all_friends.each do | f | %>
+			<li style="font-size:24px;font-weight:bold;margin: 1.2em;"><%= link_to f.name, f %></li>	
+		<% end %>	
+	</ul>
+</div>
+

@@ -5,32 +5,7 @@
 			<%= link_to "Sign up please!", 'signup' %> | <%= link_to "Sign in", 'signin' %>
 		<% else %>			
 			<h1>Welcome <%= current_user.name %>!</h1>
-			<%= link_to "Your profile", current_user %>
+			<%= link_to "View your profile", current_user %>
 		<% end %>
 	</div>
-	<% if signed_in? %>
-		<div id="friend_requests">
-			<h1>Friend requests(<%= current_user.friend_requests.count %>):</h1>
-
-			<table id="requests">
-				<% current_user.friend_requests.each do | fr | %>
-					<tr>
-						<td style="width:150px;"><%= link_to fr.requester.name, fr.requester %></td>
-						<td style="width:200px;"><div class="btn-group">
-							<button class="btn"><%= link_to "Approve", friendships_path(:friend_id => fr.requester.id), method: :post %></button>
-							<button class="btn"><%= link_to "Don't", fr, method: :delete, data: { confirm: "You sure?" } %></button>
-						</div></td>
-					</tr>
-				<% end %>
-			</table>
-		</div>
-		<div id="friends">
-			<h1>Friends(<%= current_user.number_of_friends %>):</h1>
-			<ul>
-				<% current_user.all_friends.each do | f | %>
-					<li style="font-size:24px;font-weight:bold;margin: 1.2em;"><%= link_to f.name, f %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
 </div>
