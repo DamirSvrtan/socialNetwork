@@ -1,0 +1,20 @@
+<div id="user_info_header">
+	<div id="user_info_header_left">
+			<h1>Upload a new photo</h1>
+	</div>
+</div>
+
+	<%= form_for @photo , :url => { :action => "create" }, :html => {:multipart => true } do |f| %>
+
+	      <b><%= f.label :name %></b>
+	      <%= f.text_field :name %>
+
+	      <%= f.label :public %>
+	      <%= f.check_box :public %>
+	      <br/>
+	      <br/>
+	      <%= f.file_field :image %>
+	      <br/>
+	      <%= f.submit "Add new photo", class: "btn btn-inverse btn-large", id: "add_new_photo_button" %>
+	<% end %>
+

@@ -1,5 +1,15 @@
 @import "bootstrap";
 
+	#new_photo{
+		width:300px;
+		margin-left:225px;
+		margin-top:20px;
+		
+	}
+	#add_new_photo_button{
+		width:300px;
+
+	}
 	#header2
         {
                 position:absolute;
@@ -11,7 +21,7 @@
         {
                 background-color:#FFFFFF;
 		font-family: sans-serif;
-		/*a:link, a:visited, a:active, a:hover { text-decoration: none; font-family: Verdana, Arial, Helvetica, sans-serif; color:white;}*/
+		/*a:link, a:visited, a:active, a:hover { text-decoration: none; color:#08C;}*/
         }
 	body h1{
 		color:#FFFFFF;
@@ -51,7 +61,7 @@
 		border-bottom:4px solid #FF6600;
 		left:50%;
 		margin-left:-400px;
-		height:600px;
+		min-height:600px;
 		margin-top:10px;
 		background-color:#181818;
 	}
