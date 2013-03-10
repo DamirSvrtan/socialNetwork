@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
 gem 'bootstrap-sass', '2.0.0'
-gem 'sqlite3'
+
+group :development, :test do
+	gem 'sqlite3'
+end
+
 gem 'bcrypt-ruby', '3.0.1'
 gem 'omniauth-facebook'
 
