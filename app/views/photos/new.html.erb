@@ -5,7 +5,9 @@
 </div>
 
 	<%= form_for @photo , :url => { :action => "create" }, :html => {:multipart => true } do |f| %>
-      	      <%= render 'shared/error_msgs' %>
+    	      
+	      <%= render 'shared/error_msgs.html.erb', object: f.object %>
+	      
 	      <b><%= f.label :name %></b>
 	      <%= f.text_field :name %>
 

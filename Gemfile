@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'bootstrap-sass', '2.0.0'
 gem "paperclip", "~> 3.0"
-
+gem "dynamic_form"
 
 group :production do
   gem 'pg'

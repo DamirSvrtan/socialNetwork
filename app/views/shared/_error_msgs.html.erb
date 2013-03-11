@@ -1,7 +1,7 @@
-<% if @photo.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
     <ul>
-    <% @photo.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
       <li> <%= msg %></li>
     <% end %>
     </ul>
