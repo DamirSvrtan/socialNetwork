@@ -9,3 +9,15 @@
 		<% end %>
 	</div>
 </div>
+
+<div>
+	<ul id="photo_index">
+	<% if !@photos.nil? %>
+	<% @photos.each do | photo | %>
+		<li style="display:inline-block;width:193px;">
+			<%=link_to image_tag(get_photo(photo,"medium")), photo, :class => "single_photo" %>
+		</li>
+	<% end %>
+	<% end %>
+	</ul>
+</div>

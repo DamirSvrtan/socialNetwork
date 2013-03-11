@@ -2,11 +2,11 @@ class PhotosController < ApplicationController
 
 
 	def new
-		@photo = Photo.new
+		@photo = current_user.photos.build
 	end
 
 	def create
-		@photo = Photo.new(params[:photo])
+		@photo = current_user.photos.build(params[:photo])
 		@photo.save!
 		redirect_to @photo
 	end

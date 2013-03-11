@@ -4,11 +4,25 @@
 		width:300px;
 		margin-left:225px;
 		margin-top:20px;
-		
 	}
+
 	#add_new_photo_button{
 		width:300px;
+	}
 
+	#photo_index{
+		list-style-type:none;
+		margin:0;
+	}
+
+	#photo_index li{
+		display:inline;
+	}
+
+	.single_photo{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	#header2
         {

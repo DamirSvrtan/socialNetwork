@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
 
 	has_many :friends, :through => :friendships
 	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
+	has_many :photos
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -41,6 +43,16 @@ class User < ActiveRecord::Base
 	def has_mutual_friends_with?(user)
 		return true if self.mutual_friends_with(user).count > 0
 	end
+
+ 	def friends_private_photos
+		@private_photos = []
+		self.all_friends.each do | friend |
+			@private_photos << friend.photos.where(:public => false)
+		end
+
+		return @private_photos
+	end
+
 	private
 
 		def create_remeber_token
