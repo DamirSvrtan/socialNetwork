@@ -7,8 +7,11 @@ class PhotosController < ApplicationController
 
 	def create
 		@photo = current_user.photos.build(params[:photo])
-		@photo.save!
-		redirect_to @photo
+		if @photo.save
+			redirect_to @photo
+		else 
+			render 'new'
+		end
 	end
 
 	def edit

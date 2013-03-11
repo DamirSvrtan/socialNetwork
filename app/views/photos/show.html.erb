@@ -1,7 +1,7 @@
 <div id="user_info_header">
 	<div id="user_info_header_left">
 			<h1><%= @photo.name %></h1>
-			Uploaded by <%=link_to @photo.owner.name, @photo.owner %>
+			Uploaded by <%=link_to @photo.owner.name, @photo.owner %> <%= time_ago_in_words(@photo.created_at) %> ago
 	</div>
 </div>
 
