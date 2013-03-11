@@ -1,7 +1,12 @@
 <div id="user_info_header">
 	<div id="user_info_header_left">
 			<h1><%= @photo.name %></h1>
+			Uploaded by <%=link_to @photo.owner.name, @photo.owner %>
 	</div>
 </div>
 
-<%= image_tag get_photo(@photo, "original") %>
+<div id="individual_photo">
+	<%= image_tag get_photo(@photo, "original"), :size => "300x300" %>
+</div>
+<div id="likes_on_photo">
+</div>

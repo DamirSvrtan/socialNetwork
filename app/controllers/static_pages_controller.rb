@@ -3,9 +3,7 @@ class StaticPagesController < ApplicationController
 	if !signed_in?
 		@photos = Photo.where(:public => true)
 	else
-		@photos = Photo.find_each(:batch_size => 5000) do |photo|
-			photo.id > 1
-		end
+		@photos =  Photo.where(:public => true) + current_user.private_photos_of_friends + current_user.photos.where(:public => false)
 	end
   end
   def my_friend_requests

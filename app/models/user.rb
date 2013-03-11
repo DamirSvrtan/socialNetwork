@@ -50,7 +50,16 @@ class User < ActiveRecord::Base
 			@private_photos << friend.photos.where(:public => false)
 		end
 
-		return @private_photos
+		return @private_photos.flatten
+	end
+
+	def private_photos_of_friends
+		friend_ids = []
+		
+		self.all_friends.each do |friend|
+			friend_ids << friend.id				
+		end
+		Photo.where("public = ? AND user_id IN (?)", false, friend_ids)
 	end
 
 	private

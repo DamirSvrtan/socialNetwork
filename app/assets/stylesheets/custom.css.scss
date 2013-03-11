@@ -5,7 +5,26 @@
 		margin-left:225px;
 		margin-top:20px;
 	}
+	#individual_photo{
+		margin-top:10px;
+		border:1px solid white;
+		
+	}
+	
+	#individual_photo img{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		border:8px solid #FF6600;
+		border-radius: 15px;
 
+	}
+
+	#likes_on_photo{
+		border:1px solid white;
+		height:30px;
+
+	}
 	#add_new_photo_button{
 		width:300px;
 	}
