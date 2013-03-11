@@ -31,6 +31,7 @@
 	<% if signed_in? %>
 		<div id="side_nav_bar">
 			<ul style="list-style-type:none;font-size:20px;">
+				<li><%= link_to "HOME", root_path %></li>
 				<li><%= link_to "MY PROFILE", current_user %></li>
 				<li><%= link_to "MY FRIENDS (#{current_user.number_of_friends})", friends_user_path(current_user) %></li>
 				<li><%= link_to "FRIEND REQUESTS (#{current_user.friend_requests.count})", my_friend_requests_path %></li>

@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   def show
 	@user=User.find(params[:id])
 	@friendrequest = FriendRequest.new()
+	if signed_in?
+		@photos = current_user.photos_on_profile_page(@user)
+	else
+		@photos = @user.photos.where(:public => true)
+	end
   end
 
   def new

@@ -67,6 +67,18 @@ class User < ActiveRecord::Base
 		Like.where(:user_id => self.id, :photo_id => photo_id).exists?
 	end
 
+	def photos_on_profile_page(user)
+		if self == user || self.friends_with?(user)
+			return user.photos
+		else
+			return user.photos.where(:public => true)
+		end	
+	end
+
+	def friends_with?(user)
+			Friendship.where( :user_id => user.id, :friend_id => self.id).exists? || Friendship.where( :user_id => self.id, :friend_id => user.id).exists?
+	end
+
 	private
 
 		def create_remeber_token

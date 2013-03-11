@@ -26,4 +26,8 @@ class Photo < ActiveRecord::Base
 	end
 
   end
+
+  def photo_viewable_by?(user)
+		self.public == true || user.friends_with?(self.owner) || user == self.owner
+  end
 end

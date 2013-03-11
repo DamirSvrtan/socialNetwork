@@ -3,22 +3,12 @@
 		<h1><%= @user.name %></h1>
 		<b>E-mail:</b> <%= @user.email %>
 	</div>
-	<div id="user_info_header_center">
-		<% if signed_in? %>
-			<% if @user != current_user %>
-				<%= relationship_with(@user).html_safe %>
-			<% end %>
-		<% end %>
-	</div>
-	<div id="user_info_header_right">
-		<% if signed_in? %>
-			<% if @user != current_user %>
-			<span class="label label-info" style="position:relative;font-size:12px;top:2px;height:22px;"><%= current_user.mutual_friends_with_to_s(@user) %></span>
-				<% if current_user.has_mutual_friends_with?(@user) %>
-					<b style="position:absolute;top:22px;left:3px;color:white"><%= link_to "See mutual friends", mutual_friends_user_path(@user)%></b>
-				<% end %>
-			<b style="position:absolute;top:40px;left:3px;color:white"><%= link_to "See all friends", friends_user_path(@user)%></b>	
-			<% end %>
-		<% end %>
-	</div>
+
+
+	<% if signed_in? %>
+		<%= render 'signed_in_relationship' %>
+	<% end %>
+</div>
+<div>
+	<%= render 'shared/view_collection_of_photos' %>
 </div>

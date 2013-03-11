@@ -1,23 +1,14 @@
 <div id="user_info_header">
 	<div id="user_info_header_left">
-		<% if !signed_in? %>
 			<h1>Home Page</h1>
+		<% if !signed_in? %>
 			<%= link_to "Sign up please!", 'signup' %> | <%= link_to "Sign in", 'signin' %>
 		<% else %>			
-			<h1>Welcome <%= current_user.name %>!</h1>
 			<%= link_to "View your profile", current_user %>
 		<% end %>
 	</div>
 </div>
 
 <div>
-	<ul id="photo_index">
-	<% if !@photos.nil? %>
-	<% @photos.each do | photo | %>
-		<li style="display:inline-block;width:193px;">
-			<%=link_to image_tag(get_photo(photo,"medium")), photo, :class => "single_photo" %>
-		</li>
-	<% end %>
-	<% end %>
-	</ul>
+	<%= render 'shared/view_collection_of_photos' %>
 </div>

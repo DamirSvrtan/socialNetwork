@@ -46,11 +46,15 @@
 
 	#photo_index{
 		list-style-type:none;
-		margin:0;
 	}
 
 	#photo_index li{
 		display:inline;
+	}
+
+	#photo_index li a img{
+		border:5px solid #FF6600;
+		border-radius: 5px;
 	}
 
 	.single_photo{
