@@ -8,23 +8,35 @@
 	#individual_photo{
 		margin-top:10px;
 		border:1px solid white;
-		
+		position:relative;
+	}
+	#for_clearing{
+		clear:both;
+	}
+	#likes{
+		border:1px solid white;
+		height:30px;
+	}
+	#comments{
+		border:1px solid white;
+		height:800px;
 	}
 	
 	#individual_photo img{
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
+		float:left;		
+		margin-left:10px;
 		border:8px solid #FF6600;
 		border-radius: 15px;
 
 	}
+	#likes_and_comments{
+		float:left;
+		width:470px;
+		background-color:green;
 
-	#likes_on_photo{
 		border:1px solid white;
-		height:30px;
-
 	}
+
 	#add_new_photo_button{
 		width:300px;
 	}
