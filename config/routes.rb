@@ -7,6 +7,7 @@ Shs::Application.routes.draw do
   resources :sessions, only: [ :new, :create, :destroy]
   resources :friend_requests, only: [ :new, :create, :destroy]
   resources :friendships, only: [ :new, :create, :destroy]
+  resources :likes , only: [ :create, :destroy ]
 
   resources :users do
 	member do 

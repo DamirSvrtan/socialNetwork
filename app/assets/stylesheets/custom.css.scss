@@ -7,19 +7,23 @@
 	}
 	#individual_photo{
 		margin-top:10px;
-		border:1px solid white;
+		/*border:1px solid white;*/
 		position:relative;
 	}
 	#for_clearing{
 		clear:both;
 	}
 	#likes{
-		border:1px solid white;
-		height:30px;
+		/*border:1px solid white;*/
+		height:40px;
+	}
+	#likes a{
+		font-size:20px;
+
 	}
 	#comments{
-		border:1px solid white;
-		height:800px;
+		/*border:1px solid white;*/
+		height:300px;
 	}
 	
 	#individual_photo img{
@@ -31,10 +35,9 @@
 	}
 	#likes_and_comments{
 		float:left;
-		width:470px;
-		background-color:green;
-
-		border:1px solid white;
+		margin-left:10px;
+		width:450px;
+		/*border:1px solid white;*/
 	}
 
 	#add_new_photo_button{
@@ -109,6 +112,7 @@
 		min-height:600px;
 		margin-top:10px;
 		background-color:#181818;
+		color:white;
 	}
 	div#side_nav_bar{
 		position:absolute;

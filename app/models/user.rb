@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
 	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
 	has_many :photos
-	
+	has_many :likes	
+
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :name, :presence => true, :uniqueness => true, :length => { :minimum => 3 }		
@@ -60,6 +61,10 @@ class User < ActiveRecord::Base
 			friend_ids << friend.id				
 		end
 		Photo.where("public = ? AND user_id IN (?)", false, friend_ids)
+	end
+
+	def liked?(photo_id)
+		Like.where(:user_id => self.id, :photo_id => photo_id).exists?
 	end
 
 	private

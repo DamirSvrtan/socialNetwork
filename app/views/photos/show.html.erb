@@ -9,6 +9,13 @@
 	<%= image_tag get_photo(@photo, "original"), :size => "300x300" %>
 	<div id="likes_and_comments">
 		<div id="likes">
+			<% if current_user.liked?(params[:id]) %>
+			<%= link_to "Unlike photo".upcase,{:controller => :likes, :action => :destroy, :photo_id => params[:id], :user_id => current_user.id}, :method => :delete %>
+			<p><%= @photo.like_message(:liked)%></p>
+			<% else %>
+				<%= link_to "Like photo".upcase,{:controller => :likes, :action => :create, :photo_id => params[:id]}, :method => :post %>
+				<p><%= @photo.like_message(:not_liked)%></p>
+			<% end %>
 		</div>
 		<div id="comments">
 		</div>
