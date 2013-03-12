@@ -1,9 +1,14 @@
-<div id='header2'>
-	<h1> List of users: </h1>
-	<br/>
-	<% @users.each do |user| %>
-	<ul>
-		<li><%= link_to user.name, user %></li>
+<div id="user_info_header">
+	<div id="user_info_header_left">
+		<h1>List of all users:</h1>
+		<p>Number of users: <%= @users.count %></p>
+	</div>
+</div>
+
+<div id="friends">
+	<ul >
+		<% @users.each do | user | %>
+			<li style="font-size:24px;font-weight:bold;margin: 1.2em;"><%= link_to user.name, user %></li>	
+		<% end %>	
 	</ul>
-	<% end %>
 </div>

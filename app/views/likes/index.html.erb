@@ -1,0 +1,13 @@
+<div id="user_info_header">
+	<div id="user_info_header_left">
+			<h2 style="color:white;">Likes for photo: <%= link_to @photo.name, @photo %></h2>
+			<p>Number of likes: <%= @likes.count %></p>
+	</div>
+</div>
+<div id="friends">
+	<ul >
+		<% @likes.each do | like | %>
+			<li style="font-size:24px;font-weight:bold;margin: 1.2em;"><%= link_to like.user.name, like.user %></li>	
+		<% end %>	
+	</ul>
+</div>
