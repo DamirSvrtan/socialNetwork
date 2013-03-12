@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
 	def show
 		@photo = Photo.find(params[:id])
 		@user = @photo.owner
+		@comment = Comment.new
 		redirect_to root_path if !signed_in? && @photo.public == false
 
 		if signed_in?

@@ -13,17 +13,43 @@
 	#for_clearing{
 		clear:both;
 	}
+	
 	#likes{
 		/*border:1px solid white;*/
 		height:45px;
 		border-bottom:2px solid #FF6600;
+
+		a{
+			font-size:13px;
+		}
+		a.like_link{
+			font-size:20px;
+		}
 	}
-	#likes a{
-		font-size:20px;
-	}
+
 	#comments{
-		/*border:1px solid white;*/
-		height:300px;
+		margin-top:10px;
+		color:white;
+		
+		label{
+			color:white;
+		}
+		textarea{
+			height: 53px;
+			width: 449px;
+			resize: none;
+		}
+		input{
+			margin-top:-8px;
+			margin-left:340px;
+		}
+		ul{
+			list-style-type:none;
+			margin: 0 0 18px 0;
+		}
+		li{
+			border-top:1px solid #FF6600;
+		}
 	}
 	
 	#individual_photo img{

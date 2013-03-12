@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
 	has_many :photos
 	has_many :likes	
+	has_many :comments
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

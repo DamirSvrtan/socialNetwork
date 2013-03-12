@@ -3,8 +3,10 @@ Shs::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
 
   resources :users
+
   resources :photos do
 	  resources :likes , only: [ :index, :create, :destroy ]
+	  resources :comments, only: [ :create, :destroy ]
   end
 
   resources :sessions, only: [ :new, :create, :destroy]
