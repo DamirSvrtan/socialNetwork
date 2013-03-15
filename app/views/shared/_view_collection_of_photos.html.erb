@@ -1,9 +1,11 @@
 	<ul id="photo_index" style="margin-left:8px;margin-top:10px;">
 		<% if !@photos.nil? %>
 			<% @photos.each do | photo | %>
-				<li style="display:inline-block;width:173px;margin-left:15px;margin-bottom:6px;">
-					<%=link_to image_tag(get_photo(photo,"medium")), photo,  :class => "single_photo" %>
-				</li>
+				<%= link_to(photo) do %>
+				<li style="display:inline-block;background-image:url(<%= get_photo(photo,"original") %>) "></li>
+				<% end %>
 			<% end %>
 		<% end %>
 	</ul>
+
+

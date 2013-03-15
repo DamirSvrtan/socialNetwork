@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
 			@private_photos << friend.photos.where(:public => false)
 		end
 
-		return @private_photos.flatten
+		@private_photos.flatten
 	end
 
 	def private_photos_of_friends

@@ -7,8 +7,8 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "150x150>"}, :default_url => "/images/style/missing.png"
 
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
-  has_many :likes
-  has_many :comments
+  has_many :likes, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   
 
 
