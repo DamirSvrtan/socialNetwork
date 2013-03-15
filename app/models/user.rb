@@ -18,8 +18,10 @@ class User < ActiveRecord::Base
 	has_many :comments
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+        VALID_USER_NAME = /^\w{3,}$/
 
-	validates :name, :presence => true, :uniqueness => true, :length => { :minimum => 3 }		
+	validates :name, :presence => true, :uniqueness => true, :length => { :minimum => 3 }
+        validates :name, :format => { :with => VALID_USER_NAME , :message => "valid format: letters, numbers and '_'" }
 	validates :email, :presence => true, :uniqueness => { :case_sensitive => false }, :format => { :with => VALID_EMAIL_REGEX }
 	validates :password, :presence => true, :length => { :minimum => 5 }
 	validates :password_confirmation, presence: true
