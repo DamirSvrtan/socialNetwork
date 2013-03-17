@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
 
-  attr_accessible :name, :public, :image
+  attr_accessible :name, :public, :image, :tags
   validates :name, :presence => true
   validates_attachment_presence :image
 
@@ -36,4 +36,20 @@ class Photo < ActiveRecord::Base
   def photo_viewable_by?(user)
 		self.public == true || user.friends_with?(self.owner) || user == self.owner
   end
+
+
+  def tagged_users
+	users = []
+	unless self.tags.nil?
+      		self.tags.split(' ').each do |tag|
+           		if User.find_by_name("#{tag.gsub('#','')}")
+				users << User.find_by_name("#{tag.gsub('#','')}")
+			end
+		end
+	end
+	users		
+  end
+
+
+
 end

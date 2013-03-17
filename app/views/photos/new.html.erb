@@ -17,6 +17,8 @@
 	      <br/>
 	      <%= f.file_field :image %>
 	      <br/>
+	      <b><%= f.label :tags %></b>
+	      <%= f.text_field :tags %>
 	      <%= f.submit "Add new photo", class: "btn btn-inverse btn-large", id: "add_new_photo_button" %>
 	<% end %>
 

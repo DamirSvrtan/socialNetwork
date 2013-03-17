@@ -26,6 +26,18 @@
 			font-size:20px;
 		}
 	}
+	#tags{
+		border-bottom:2px solid #FF6600;
+		min-height:15px;
+		ul{
+			list-style-type:none;
+			margin: 0 0 18px 2px;
+			
+			li{
+				display:inline;
+			}
+		}
+	}
 
 	#comments{
 		margin-top:10px;
@@ -157,6 +169,10 @@
 		margin-top:10px;
 		background-color:#181818;
 		color:white;
+
+		label {
+			color:white;
+		}
 	}
 	div#side_nav_bar{
 		position:absolute;

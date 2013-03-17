@@ -11,17 +11,27 @@
 		<div id="likes">
 		<% if signed_in? %>
 			<% if current_user.liked?(params[:id]) %> 
-			<%= link_to "Unlike photo".upcase,{:controller => :likes, :action => :destroy, :photo_id => params[:id], :user_id => current_user.id}, :method => :delete, :class => "like_link" %>
-			<p style="font-size:13px"><%= @photo.like_message(:liked)%> | <%= link_to "View all likes", photo_likes_path(@photo) %> </p>
+				<%= link_to "UNLIKE PHOTO",{:controller => :likes, :action => :destroy, :photo_id => params[:id]}, :method => :delete, :class => "like_link" %>
+				<p><%= @photo.like_message(:liked)%> | <%= link_to "View all likes", photo_likes_path(@photo) %> </p>
 			<% else %>
-				<%= link_to "Like photo".upcase,{:controller => :likes, :action => :create, :photo_id => params[:id] }, :method => :post, :class => "like_link" %>
+				<%= link_to "LIKE PHOTO",{:controller => :likes, :action => :create, :photo_id => params[:id] }, :method => :post, :class => "like_link" %>
 				<p><%= @photo.like_message(:not_liked)%> | <%= link_to "View all likes", photo_likes_path(@photo) %></p>
 			<% end %>
 		<%else%>
 				<p><%= @photo.like_message(:not_liked)%> | <%= link_to "View all likes", photo_likes_path(@photo) %></p>
 		<%end%>
-		
 		</div>
+
+		<% if @photo.tags.present? %>
+		<div id="tags">
+			<h3 style="color:#08C;margin-top:3px;">TAGS:</h3>
+			<ul id="show_tags">
+				<% @photo.tagged_users.each do |user| %>
+					<li><%= link_to "##{user.name}", user %></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
 		<div id="comments">
 			<%= form_for([@photo, @comment]) do |f| %>
 				<%= render 'shared/error_msgs.html.erb', object: f.object %>

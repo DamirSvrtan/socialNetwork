@@ -14,7 +14,7 @@ class LikesController < ApplicationController
 	end
 
 	def destroy
-		@dislike = Like.where(:photo_id => params[:photo_id], :user_id => params[:user_id]).first
+		@dislike = Like.where(:photo_id => params[:photo_id], :user_id => current_user.id).first
 		@dislike.destroy
 		@photo = Photo.find(params[:photo_id])
 		redirect_to @photo		
