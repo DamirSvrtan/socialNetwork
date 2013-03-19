@@ -2,6 +2,7 @@ Shs::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
 
+
   resources :users
 
   resources :photos do
@@ -12,6 +13,7 @@ Shs::Application.routes.draw do
   resources :sessions, only: [ :new, :create, :destroy]
   resources :friend_requests, only: [ :new, :create, :destroy]
   resources :friendships, only: [ :new, :create, :destroy]
+  resources :mailing_lists, only: [ :new, :create]
 
   resources :users do
 	member do 

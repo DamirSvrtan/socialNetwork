@@ -9,5 +9,4 @@ class StaticPagesController < ApplicationController
   def my_friend_requests
   end
 
-
 end
