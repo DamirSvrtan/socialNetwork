@@ -1,5 +1,25 @@
 @import "bootstrap";
 
+	.hajlajt{
+		background-color:red;
+	}
+
+	form.new_mailing_list{
+		border:1px solid white;
+		width:450px;
+		margin-top:20px;
+		margin-left:20px;
+		.btn-primary{
+		width:250px;
+		}
+		#mailing_list_email{
+		width:250px;
+		}
+
+		.mail_input{
+			display:inline;
+		}
+	}
 	#new_photo{
 		width:300px;
 		margin-left:225px;

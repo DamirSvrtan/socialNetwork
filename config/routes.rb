@@ -13,7 +13,11 @@ Shs::Application.routes.draw do
   resources :sessions, only: [ :new, :create, :destroy]
   resources :friend_requests, only: [ :new, :create, :destroy]
   resources :friendships, only: [ :new, :create, :destroy]
-  resources :mailing_lists, only: [ :new, :create]
+  resources :mailing_lists, only: [ :new, :create] do
+	collection do 
+		get 'email_exists'
+	end
+  end
 
   resources :users do
 	member do 
@@ -25,6 +29,8 @@ Shs::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  
+  match '/email_exists', to: 'mailing_lists#email_exists'
 
   match '/my_friend_requests', to: 'static_pages#my_friend_requests'
 

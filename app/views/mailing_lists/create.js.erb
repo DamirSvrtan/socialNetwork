@@ -1,0 +1,25 @@
+var email_input = $("input#mailing_list_email");
+
+<% if @mail.new_record? %>
+
+	if( document.getElementById('mailing_list_email').value == ""){
+		email_input.effect('highlight', { color: '#C80000' }, 1000);
+	}
+
+
+<% else %>
+
+	$('#mail_er_msg').hide();
+	bounceit();
+	setTimeout(clearvalue,1000);
+
+<% end %>
+
+function clearvalue(){
+	email_input.val("");
+}
+
+function bounceit(){
+	$("form.new_mailing_list").effect("shake", { times:2 }, 1000);
+}
+

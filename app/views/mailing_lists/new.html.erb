@@ -3,8 +3,36 @@
                 <h1>Add yourself to the mailing list:</h1>
         </div>
 </div>
-	<%= form_for(@mail) do |f| %>
+
+	<%= form_for(@mail, remote: true) do |f| %>
+	<%= render 'shared/error_msgs.html.erb', object: f.object %>
 	<%= f.label :email %>
-	<%= f.text_field :email %>
-	<%= f.submit "Submit" %>
+	<%= f.text_field :email, :class => "mail_input"%>
+
+	<p id="mail_er_msg" class="mail_input">"Email already exists!"</p>
+	<br>
+	<%= f.submit "Submit", :class => "btn btn-primary" %>
 	<% end %>
+
+<script>
+	$('#mail_er_msg').hide();
+
+	$('#mailing_list_email').on('blur', function(){
+
+		$.ajax('/email_exists?email=damir.svrtan@gmail.com', {
+			dataType: 'json',
+			success: function(result) {
+				$('#mail_er_msg').show();
+				$('#mail_er_msg').text(result.email);
+				//$('#mail_er_msg').html("<p>OKaau</p>");
+				}
+		});
+	});
+
+
+	$('#mailing_list_email').on('focusin', function(){
+			$('#mail_er_msg').hide();
+	});
+	
+</script>
+
