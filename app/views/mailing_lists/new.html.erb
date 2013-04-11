@@ -9,7 +9,7 @@
 	<%= f.label :email %>
 	<%= f.text_field :email, :class => "mail_input"%>
 
-	<p id="mail_er_msg" class="mail_input">"Email already exists!"</p>
+	<p id="mail_er_msg" class="mail_input">"Available"</p>
 	<br>
 	<%= f.submit "Submit", :class => "btn btn-primary" %>
 	<% end %>
@@ -18,13 +18,18 @@
 	$('#mail_er_msg').hide();
 
 	$('#mailing_list_email').on('blur', function(){
-
-		$.ajax('/email_exists?email=damir.svrtan@gmail.com', {
+	var adress = $(this).val();
+		$.ajax('/email_exists', {
+			data: { email: adress },
+			cache: false,
 			dataType: 'json',
 			success: function(result) {
-				$('#mail_er_msg').show();
-				$('#mail_er_msg').text(result.email);
-				//$('#mail_er_msg').html("<p>OKaau</p>");
+				if(result.email != null){
+					$('#mail_er_msg').show().text(result.email + " is already taken").css('color','red');
+					}
+				else{
+					$('#mail_er_msg').show().text("Available").css('color','green');
+				}
 				}
 		});
 	});
