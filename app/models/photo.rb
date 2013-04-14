@@ -1,6 +1,10 @@
 class Photo < ActiveRecord::Base
+  after_save :handle_tags
 
-  attr_accessible :name, :public, :image, :tags
+  attr_accessible :name, :public, :image, :tagz
+
+  attr_accessor :tagz
+
   validates :name, :presence => true
   validates_attachment_presence :image
 
@@ -9,6 +13,8 @@ class Photo < ActiveRecord::Base
   belongs_to :owner, :class_name => "User", :foreign_key => "user_id"
   has_many :likes, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+
+  has_and_belongs_to_many :tags
   
 
 
@@ -37,19 +43,14 @@ class Photo < ActiveRecord::Base
 		self.public == true || user.friends_with?(self.owner) || user == self.owner
   end
 
-
-  def tagged_users
-	users = []
-	unless self.tags.nil?
-      		self.tags.split(' ').each do |tag|
-           		if User.find_by_name("#{tag.gsub('#','')}")
-				users << User.find_by_name("#{tag.gsub('#','')}")
-			end
-		end
-	end
-	users		
+  def handle_tags
+      a_tags = tagz.split(', ')
+      a_tags.each do |tag|
+      		new_tag = Tag.where(:name => tag).first_or_create
+		self.tags << new_tag
+		new_tag.counter += 1
+		new_tag.save
+      end
   end
-
-
 
 end

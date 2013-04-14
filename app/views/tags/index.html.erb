@@ -1,0 +1,11 @@
+<div id="user_info_header">
+	<div id="user_info_header_left">
+			<h1>TAGS</h1>
+			<h4 style="color:white">All tags on all photos</h4>
+	</div>
+</div>
+<div id="all_tags">
+	<% @tags.each do |tag| %>
+		<%= link_to tag.name, tag %>
+	<% end %>
+</div>

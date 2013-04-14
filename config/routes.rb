@@ -9,7 +9,7 @@ Shs::Application.routes.draw do
 	  resources :likes , only: [ :index, :create, :destroy ]
 	  resources :comments, only: [ :create, :destroy ]
   end
-
+  resources :tags, only: [:index, :show]
   resources :sessions, only: [ :new, :create, :destroy]
   resources :friend_requests, only: [ :new, :create, :destroy]
   resources :friendships, only: [ :new, :create, :destroy]
