@@ -1,7 +1,7 @@
 class MailingListsController < ApplicationController
 
 def new
-  @mail = MailingList.new
+   @mailing_lists = MailingList.all
 end
 
 def create

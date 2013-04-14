@@ -1,19 +1,15 @@
 var email_input = $("input#mailing_list_email");
 
 <% if @mail.new_record? %>
-
 	if( document.getElementById('mailing_list_email').value == ""){
 		$('#mail_er_msg').hide();
 		email_input.effect('highlight', { color: '#C80000' }, 1000);
 	}
-
-
 <% else %>
-
 	$('#mail_er_msg').hide();
 	bounceit();
 	setTimeout(clearvalue,1000);
-
+        $('#mejlovi').prepend('<li><%=j @mail.email %></li>');
 <% end %>
 
 function clearvalue(){

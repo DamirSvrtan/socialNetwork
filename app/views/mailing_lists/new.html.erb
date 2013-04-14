@@ -4,7 +4,7 @@
         </div>
 </div>
 
-	<%= form_for(@mail, remote: true) do |f| %>
+	<%= form_for(MailingList.new, remote: true) do |f| %>
 	<%= render 'shared/error_msgs.html.erb', object: f.object %>
 	<%= f.label :email %>
 	<%= f.text_field :email, :class => "mail_input"%>
@@ -13,11 +13,15 @@
 	<br>
 	<%= f.submit "Submit", :class => "btn btn-primary" %>
 	<% end %>
-
+	<ul id="mejlovi">
+        <% @mailing_lists.each do |mail| %>
+		<li><%= mail.email %></li>
+        <% end %>
+	</ul>
 <script>
 	$('#mail_er_msg').hide();
 
-	$('#mailing_list_email').on('blur', function(){
+	$('#mailing_list_email').live('input', function(){
 	var adress = $(this).val();
 		$.ajax('/email_exists', {
 			data: { email: adress },
