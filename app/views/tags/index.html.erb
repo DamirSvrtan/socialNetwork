@@ -5,7 +5,7 @@
 	</div>
 </div>
 <div id="all_tags">
-	<% @tags.each do |tag| %>
-		<%= link_to tag.name, tag %>
+	<% tag_cloud @tags, ["s","m","l"] do |tag, css_class| %>
+		<%= link_to tag.name, tag,  :class => css_class %>
 	<% end %>
 </div>

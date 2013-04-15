@@ -8,4 +8,13 @@ def full_title(page_title)
 		"#{base_title} | #{page_title}"
 	end
 end
+
+def tag_cloud(tags, classes)
+  max = tags.collect(&:counter).sort.last
+  tags.each do |tag|
+    index = tag.counter / max * (classes.size - 1)
+    yield(tag, classes[index.round])
+  end
+end
+
 end
