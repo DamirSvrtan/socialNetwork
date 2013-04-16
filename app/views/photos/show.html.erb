@@ -6,7 +6,7 @@
 </div>
 
 <div id="individual_photo">
-	<%= image_tag get_photo(@photo, "original"), :size => "300x300" %>
+	<%= image_tag @photo.image.url, :size => "300x300" %>
 	<div id="likes_and_comments">
 		<div id="likes">
 		<% if signed_in? %>

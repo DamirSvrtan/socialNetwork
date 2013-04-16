@@ -13,7 +13,7 @@ def tag_cloud(tags, classes)
   max = tags.collect(&:counter).sort.last
   tags.each do |tag|
     index = tag.counter / max * (classes.size - 1)
-    yield(tag, classes[index.round])
+    yield(tag, classes[index.ceil])
   end
 end
 
