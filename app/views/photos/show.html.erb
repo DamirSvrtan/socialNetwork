@@ -6,7 +6,7 @@
 </div>
 
 <div id="individual_photo">
-	<%= image_tag @photo.image.url, :size => "300x300" %>
+	<%= link_to image_tag(@photo.image.url, :size => "300x300"), @photo.image.url, :rel => "lightbox", :title => @photo.name %>
 	<div id="likes_and_comments">
 		<div id="likes">
 		<% if signed_in? %>

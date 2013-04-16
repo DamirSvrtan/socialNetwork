@@ -2,7 +2,7 @@
 		<% if !@photos.nil? %>
 			<% @photos.each do | photo | %>
 				<%= link_to(photo) do %>
-				<li style="display:inline-block;background-image:url(<%= get_photo(photo,"original") %>) "></li>
+				<li style="display:inline-block;background-image:url(<%= photo.image.url %>) "></li>
 				<% end %>
 			<% end %>
 		<% end %>
