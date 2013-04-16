@@ -1,0 +1,47 @@
+<div id="user_info_header">
+        <div id="user_info_header_left">
+                <h1>Add yourself to the mailing list:</h1>
+        </div>
+</div>
+
+	<%= form_for(MailingList.new, remote: true) do |f| %>
+	<%= render 'shared/error_msgs.html.erb', object: f.object %>
+	<%= f.label :email %>
+	<%= f.text_field :email, :class => "mail_input"%>
+
+	<p id="mail_er_msg" class="mail_input">"Available"</p>
+	<br>
+	<%= f.submit "Submit", :class => "btn btn-primary" %>
+	<% end %>
+	<ul id="mejlovi">
+        <% @mailing_lists.each do |mail| %>
+		<li><%= mail.email %></li>
+        <% end %>
+	</ul>
+<script>
+	$('#mail_er_msg').hide();
+
+	$('#mailing_list_email').live('input', function(){
+	var adress = $(this).val();
+		$.ajax('/email_exists', {
+			data: { email: adress },
+			cache: false,
+			dataType: 'json',
+			success: function(result) {
+				if(result.email != null){
+					$('#mail_er_msg').show().text(result.email + " is already taken").css('color','red');
+					}
+				else{
+					$('#mail_er_msg').show().text("Available").css('color','green');
+				}
+				}
+		});
+	});
+
+
+	$('#mailing_list_email').on('focusin', function(){
+			$('#mail_er_msg').hide();
+	});
+	
+</script>
+

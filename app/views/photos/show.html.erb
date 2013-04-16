@@ -6,7 +6,7 @@
 </div>
 
 <div id="individual_photo">
-	<%= image_tag get_photo(@photo, "original"), :size => "300x300" %>
+	<%= image_tag @photo.image.url, :size => "300x300" %>
 	<div id="likes_and_comments">
 		<div id="likes">
 		<% if signed_in? %>
@@ -21,17 +21,15 @@
 				<p><%= @photo.like_message(:not_liked)%> | <%= link_to "View all likes", photo_likes_path(@photo) %></p>
 		<%end%>
 		</div>
-
-		<% if @photo.tags.present? %>
-		<div id="tags">
-			<h3 style="color:#08C;margin-top:3px;">TAGS:</h3>
-			<ul id="show_tags">
-				<% @photo.tagged_users.each do |user| %>
-					<li><%= link_to "##{user.name}", user %></li>
+                <div id="tags">
+			<% if @photo.tags %>
+			<ul>
+				<% @photo.tags.each do |tag| %>
+					<li><%= link_to tag.name, tag %></li>	
 				<% end %>
-			</ul>
+			</ul>			
+			<% end %>
 		</div>
-		<% end %>
 		<div id="comments">
 			<%= form_for([@photo, @comment]) do |f| %>
 				<%= render 'shared/error_msgs.html.erb', object: f.object %>

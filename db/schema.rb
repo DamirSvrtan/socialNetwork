@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315151910) do
+ActiveRecord::Schema.define(:version => 20130414233049) do
 
   create_table "comments", :force => true do |t|
     t.integer  "user_id"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(:version => 20130315151910) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "mailing_lists", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "photos", :force => true do |t|
     t.string   "name"
     t.boolean  "public"
@@ -52,7 +58,18 @@ ActiveRecord::Schema.define(:version => 20130315151910) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
-    t.text     "tags"
+  end
+
+  create_table "photos_tags", :id => false, :force => true do |t|
+    t.integer "photo_id"
+    t.integer "tag_id"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "counter",    :default => 0
   end
 
   create_table "users", :force => true do |t|
